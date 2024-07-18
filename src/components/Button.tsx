@@ -8,6 +8,7 @@ interface ButtonProps {
   onPress: () => void;
   style?: ViewStyle;
   textStyle?: TextStyle;
+  fullWidth?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -15,9 +16,13 @@ const Button: React.FC<ButtonProps> = ({
   onPress,
   style,
   textStyle,
+  fullWidth,
 }) => {
   return (
-    <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles.button, fullWidth && styles.fullWidth, style]}
+      onPress={onPress}
+    >
       <Text style={[styles.text, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
@@ -25,10 +30,14 @@ const Button: React.FC<ButtonProps> = ({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#007BFF',
-    padding: 10,
-    borderRadius: 5,
+    backgroundColor: '#8E7BEA',
+    paddingHorizontal: 24,
+    paddingVertical: 8,
+    borderRadius: 10,
     alignItems: 'center',
+  },
+  fullWidth: {
+    width: '100%',
   },
   text: {
     color: '#FFFFFF',
