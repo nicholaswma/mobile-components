@@ -1,5 +1,5 @@
 {
-  "name": "@nickeeeeyyyy/testing",
+  "name": "mobile-components-storybook",
   "version": "0.0.1",
   "main": "expo/AppEntry.js",
   "scripts": {
