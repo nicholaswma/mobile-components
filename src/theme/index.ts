@@ -5,6 +5,7 @@ export const lightTheme: DefaultTheme = {
     primary: '#8E7BEA',
     background: '#FFFFFF',
     text: '#000000',
+    inputField: '#A3A3A3',
   },
 };
 
@@ -13,6 +14,7 @@ export const darkTheme: DefaultTheme = {
     primary: '#000000',
     background: '#121212',
     text: '#FFFFFF',
+    inputField: '#A3A3A3',
   },
 };
 
