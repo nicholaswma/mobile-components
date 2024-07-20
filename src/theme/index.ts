@@ -4,14 +4,14 @@ export const lightTheme: DefaultTheme = {
   colors: {
     primary: '#8E7BEA',
     background: '#FFFFFF',
-    text: '#000000',
+    text: '#FFFFFF',
     inputField: '#A3A3A3',
   },
 };
 
 export const darkTheme: DefaultTheme = {
   colors: {
-    primary: '#000000',
+    primary: '#8E7BEA',
     background: '#121212',
     text: '#FFFFFF',
     inputField: '#A3A3A3',

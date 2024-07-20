@@ -13,10 +13,14 @@ const ButtonMeta: Meta<typeof Button> = {
       control: 'radio',
       options: ['light', 'dark'],
     },
+    fullWidth: {
+      control: 'boolean',
+    },
   },
   args: {
     title: 'Test Button',
     theme: 'light',
+    fullWidth: false,
   },
 };
 
@@ -26,23 +30,27 @@ interface ButtonWithThemeToggleProps {
   title: string;
   onPress: () => void;
   theme: 'light' | 'dark';
+  fullWidth: boolean;
 }
 
 const ButtonWithThemeToggle: React.FC<ButtonWithThemeToggleProps> = (props) => {
   const { toggleTheme, themeType } = useTheme();
-
   React.useEffect(() => {
     if (props.theme !== themeType) {
       toggleTheme();
     }
   }, [props.theme, themeType, toggleTheme]);
 
-  return <Button title={props.title} onPress={props.onPress} />;
+  return (
+    <Button onPress={props.onPress} fullWidth={props.fullWidth}>
+      {props.title}
+    </Button>
+  );
 };
 
 export const Basic: StoryObj<typeof ButtonWithThemeToggle> = {
   render: (args) => (
-    <View style={{ padding: 20 }}>
+    <View style={{ padding: 20, width: '100%' }}>
       <ButtonWithThemeToggle {...args} />
     </View>
   ),
