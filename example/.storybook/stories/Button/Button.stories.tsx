@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import type { Meta, StoryObj } from '@storybook/react-native';
 import Button from '../../../../src/components/Button';
-import { useTheme } from '../../../../src/theme/ThemeContext';
+import { ThemeProvider } from '../../../../src/theme/ThemeContext';
 
 const ButtonMeta: Meta<typeof Button> = {
   title: 'Button',
@@ -18,7 +18,7 @@ const ButtonMeta: Meta<typeof Button> = {
     },
   },
   args: {
-    title: 'Test Button',
+    children: 'Test Button',
     theme: 'light',
     fullWidth: false,
   },
@@ -26,32 +26,27 @@ const ButtonMeta: Meta<typeof Button> = {
 
 export default ButtonMeta;
 
-interface ButtonWithThemeToggleProps {
-  title: string;
+interface ButtonWithThemeProps {
+  children: React.ReactNode;
   onPress: () => void;
   theme: 'light' | 'dark';
   fullWidth: boolean;
 }
 
-const ButtonWithThemeToggle: React.FC<ButtonWithThemeToggleProps> = (props) => {
-  const { toggleTheme, themeType } = useTheme();
-  React.useEffect(() => {
-    if (props.theme !== themeType) {
-      toggleTheme();
-    }
-  }, [props.theme, themeType, toggleTheme]);
-
+const ButtonWithTheme: React.FC<ButtonWithThemeProps> = (props) => {
   return (
-    <Button onPress={props.onPress} fullWidth={props.fullWidth}>
-      {props.title}
-    </Button>
+    <ThemeProvider theme={props.theme}>
+      <Button onPress={props.onPress} fullWidth={props.fullWidth}>
+        {props.children}
+      </Button>
+    </ThemeProvider>
   );
 };
 
-export const Basic: StoryObj<typeof ButtonWithThemeToggle> = {
+export const Basic: StoryObj<typeof ButtonWithTheme> = {
   render: (args) => (
     <View style={{ padding: 20, width: '100%' }}>
-      <ButtonWithThemeToggle {...args} />
+      <ButtonWithTheme {...args} />
     </View>
   ),
 };

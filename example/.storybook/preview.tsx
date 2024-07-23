@@ -13,7 +13,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <ThemeProvider>
+      <ThemeProvider theme={'dark'}>
         <Story />
       </ThemeProvider>
     ),

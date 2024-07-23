@@ -4,7 +4,7 @@ export const lightTheme: DefaultTheme = {
   colors: {
     primary: '#8E7BEA',
     background: '#FFFFFF',
-    text: '#FFFFFF',
+    text: '#000000',
     inputField: '#A3A3A3',
   },
 };

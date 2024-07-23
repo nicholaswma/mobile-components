@@ -8,6 +8,7 @@ interface ButtonProps {
   onPress?: () => void;
   fullWidth?: boolean;
   disabled?: boolean;
+  alternate?: boolean;
   styled?: {
     container?: ViewStyle;
     text?: TextStyle;
@@ -17,8 +18,9 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   children,
   onPress,
-  fullWidth = false,
-  disabled = true,
+  fullWidth,
+  disabled,
+  alternate,
   styled: customStyle,
 }) => {
   const theme = useTheme();
@@ -28,6 +30,7 @@ const Button: React.FC<ButtonProps> = ({
       theme={theme}
       fullWidth={fullWidth}
       disabled={disabled}
+      alternate={alternate}
       style={customStyle?.container}
     >
       <ButtonText style={customStyle?.text} disabled={disabled}>
@@ -41,20 +44,33 @@ interface StyledButtonProps {
   theme: DefaultTheme;
   fullWidth: boolean;
   disabled: boolean;
+  alternate: boolean;
 }
 
 const StyledButton = styled.TouchableOpacity<StyledButtonProps>`
-  background-color: #8e7bea;
+  background-color: ${(props: any) =>
+    props.alternate
+      ? 'transparent'
+      : props.disabled
+        ? '#544A81'
+        : props.theme.colors.primary};
+  border-width: ${(props: { alternate: any }) =>
+    props.alternate ? '1.5px' : '0'};
+  border-color: ${(props: { disabled: any }) =>
+    props.disabled ? '#544A81' : '#8e7bea'};
   padding: 10px 20px;
   border-radius: 10px;
   font-family: 'ManropeRegular';
   align-items: center;
   justify-content: center;
-  align-self: ${(props: any) => (props.fullWidth ? 'stretch' : 'flex-start')};
+  align-self: ${(props: { fullWidth: boolean }) =>
+    props.fullWidth ? 'stretch' : 'flex-start'};
 `;
 
 const ButtonText = styled.Text<{ disabled: boolean }>`
-  color: ${(props: any) => props.theme.colors.text};
+  color: ${(props: any) =>
+    props.disabled ? '#A9A4C0' : props.theme.colors.text};
+  text-align: center;
   text-align: center;
 `;
 
