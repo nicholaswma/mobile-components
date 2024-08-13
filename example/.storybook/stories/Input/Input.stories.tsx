@@ -86,7 +86,12 @@ export const WithErrorStatus = () => {
   }, []);
   return (
     <View style={{ padding: 20 }}>
-      <Input {...bindings} placeholder="Error input" />
+      <Input
+        {...bindings}
+        error={true}
+        errorMessage="Error: invalid wallet address"
+        placeholder="Error input"
+      />
     </View>
   );
 };

@@ -6,6 +6,7 @@ export const lightTheme: DefaultTheme = {
     background: '#FFFFFF',
     text: '#000000',
     inputField: '#A3A3A3',
+    fail: '#ff1a1a',
   },
 };
 
@@ -15,6 +16,7 @@ export const darkTheme: DefaultTheme = {
     background: '#121212',
     text: '#FFFFFF',
     inputField: '#A3A3A3',
+    fail: '#ff1a1a',
   },
 };
 

@@ -68,10 +68,11 @@ const StyledButton = styled.TouchableOpacity<StyledButtonProps>`
 `;
 
 const ButtonText = styled.Text<{ disabled: boolean }>`
-  color: ${(props: any) =>
-    props.disabled ? '#A9A4C0' : props.theme.colors.text};
+  color: ${(props: any) => (props.disabled ? '#A9A4C0' : '#ffffff')};
   text-align: center;
+  font-family: ManropeSemiBold;
   text-align: center;
+  font-size: 16px;
 `;
 
 export default Button;
